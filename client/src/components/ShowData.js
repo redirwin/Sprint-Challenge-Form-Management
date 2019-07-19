@@ -1,7 +1,5 @@
-import React from "react"
+import React from "react";
 
 export default function ShowData() {
-    <div></div>
+  return <div />;
 }
-
-export default ShowData
