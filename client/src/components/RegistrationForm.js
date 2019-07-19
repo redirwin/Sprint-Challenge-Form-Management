@@ -55,10 +55,10 @@ export default withFormik({
     console.log(values, formikBag);
 
     axiosWithAuth()
-      .post("/api/register", values)
+      .post("api/register", values)
       .then(res => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
+        formikBag.props.updateIsToken(true);
       })
       .catch(err => {
         console.log(err);

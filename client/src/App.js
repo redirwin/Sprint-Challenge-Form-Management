@@ -5,12 +5,15 @@ import RegistrationForm from "./components/RegistrationForm";
 import ShowData from "./components/ShowData";
 
 function App() {
-  const [isToken, updateIsToken] = useState();
-  const [data, updateData] = useState([]);
+  const [isToken, updateIsToken] = useState(localStorage.getItem(false));
+  // const [data, updateData] = useState([]);
   return (
     <div>
-      <RegistrationForm />
-      <ShowData />
+      {isToken ? (
+        <ShowData />
+      ) : (
+        <RegistrationForm updateIsToken={updateIsToken} />
+      )}
     </div>
   );
 }
