@@ -2,6 +2,9 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
+import useLocalStorage from "../customhooks/useLocalStorage";
+import axiosWithAuth from "../helpers/axiosWithAuth";
+
 function RegistrationForm({ touched, errors }) {
   return (
     <div className="form-wrapper">
@@ -9,12 +12,12 @@ function RegistrationForm({ touched, errors }) {
         <div className="form-group">
           <Field
             className="input"
-            name="userName"
+            name="username"
             type="text"
             placeholder="username"
             autoComplete="off"
           />
-          <p className="error-message">{touched.userName && errors.userName}</p>
+          <p className="error-message">{touched.username && errors.username}</p>
         </div>
         <div className="form-group">
           <Field
@@ -34,13 +37,13 @@ function RegistrationForm({ touched, errors }) {
 export default withFormik({
   mapPropsToValues() {
     return {
-      userName: "",
+      username: "",
       password: ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    userName: Yup.string()
+    username: Yup.string()
       .required("Username is required.")
       .min(8, "Username must bo at least 8 characters."),
     password: Yup.string()
@@ -49,16 +52,16 @@ export default withFormik({
   }),
 
   handleSubmit(values, formikBag) {
-    console.log(values);
-    //   axiosWithAuth()
-    //     .post("/api/friends", values)
-    //     .then(res => {
-    //       formikBag.props.updateFriends(res.data);
-    //       formikBag.resetForm();
-    //       formikBag.setSubmitting();
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
+    console.log(values, formikBag);
+
+    axiosWithAuth()
+      .post("/api/register", values)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 })(RegistrationForm);
