@@ -1,12 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import RegistrationForm from "./components/RegistrationForm";
+import ShowData from "./components/ShowData";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-      </header>
+    <div>
+      <RegistrationForm />
+      <ShowData />
     </div>
   );
 }
