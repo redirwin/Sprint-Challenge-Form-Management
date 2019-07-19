@@ -18,7 +18,7 @@ export default function ShowData() {
   }, []);
 
   return (
-    <>
+    <div className="data-wrapper">
       {data.map(recipe => {
         return (
           <div key={recipe.name} className="recipe-card-wrapper">
@@ -31,6 +31,6 @@ export default function ShowData() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
