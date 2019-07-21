@@ -1,0 +1,44 @@
+.App,
+.data-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: #217579;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background-color: #99C6C7;
+    width: 30vw;
+    height: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input,
+button {
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+button {
+    align-self: left;
+    /* border: 1px solid black; */
+    border: none;
+    background-color: #217579;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:active {
+    box-shadow: none;
+}
